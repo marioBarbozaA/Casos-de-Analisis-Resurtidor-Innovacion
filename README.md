@@ -1,4 +1,4 @@
-# README - Análisis Prueba Walmart 2025
+# README - Casos-de-Analisis-Resurtidor-Innovacion
 
 ---
 
@@ -126,4 +126,4 @@ Este proyecto tiene como objetivo realizar un análisis de inventario utilizando
 
 _Elaborado por: Mario Barboza_
 
-_Proyecto: Prueba de Análisis de Inventario Walmart 2025_
+_Proyecto: Prueba de Casos de Analisis Resurtidor Innovacion_
