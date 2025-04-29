@@ -124,6 +124,58 @@ Este proyecto tiene como objetivo realizar un análisis de inventario utilizando
 
 ---
 
+# 🔹 Caso 4: Script SQL
+
+Este caso se desarrollará durante la entrevista. Aún no ha sido abordado en esta fase.
+
+---
+
+# 🔹 Caso 5: Modelo de Almacenamiento de Datos
+
+## Objetivo
+Diseñar un modelo de almacenamiento robusto que permita:
+- Construir un historial confiable de datos.
+- Facilitar el análisis de tendencias y evolución en el tiempo.
+- Evitar duplicidades.
+- Permitir auditoría del origen y carga de los datos.
+
+## Características clave
+- Uso de `fecha_corte` y `fecha_carga` para diferenciar el momento del dato y su ingreso al sistema.
+- Campo `source` para trazabilidad.
+- Clave primaria compuesta para prevenir duplicados.
+- ID técnico `id_inventario` para referencia interna.
+
+## Estructura propuesta: `fact_inventario_historial`
+
+| Campo                   | Tipo         | Descripción                                               |
+|------------------------|--------------|-----------------------------------------------------------|
+| `id_inventario`        | UUID / String| ID técnico del registro                                  |
+| `pais`                 | String       | Código del país (ej.: CR, GT, HN)                         |
+| `formato`              | String       | Tipo de tienda (DISCOUNT, BODEGA, etc.)                   |
+| `categoría`            | String       | Categoría de producto                                     |
+| `mes`                  | Integer      | Mes del dato (ej.: 1 a 12)                                |
+| `combinaciones`        | Integer      | Total de combinaciones registradas                        |
+| `oust`                 | Integer      | Total de quiebres (Oust)                                  |
+| `tiendas_con_inventario` | Integer    | Tiendas que tenían el producto                            |
+| `tiendas_sin_inventario` | Integer    | Tiendas que no tenían el producto                         |
+| `in_stock`             | Decimal(5,4) | Porcentaje de In Stock                                    |
+| `dispersión`           | Decimal(5,4) | Porcentaje de Dispersión                                  |
+| `fecha_corte`          | Date         | Fecha a la que corresponde el dato                        |
+| `fecha_carga`          | Timestamp    | Fecha en que se cargó el registro al sistema              |
+| `source`               | String       | Fuente del dato (ej.: `upload_excel`, `pipeline_autom`)   |
+
+## Diagrama del modelo
+
+![Diagram_model](https://github.com/user-attachments/assets/dcd8f5d2-8cdd-4ddb-9715-2ee2bef09652)
+
+## Beneficios del modelo
+- Histórico limpio y auditable.
+- Preparado para dashboards y tendencias.
+- Flexible y extensible.
+
+---
+
 _Elaborado por: Mario Barboza_
 
 _Proyecto: Prueba de Casos de Analisis Resurtidor Innovacion_
+
