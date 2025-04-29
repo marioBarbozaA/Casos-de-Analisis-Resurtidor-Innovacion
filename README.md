@@ -172,26 +172,7 @@ Diseñar un modelo de almacenamiento robusto que permita:
 - Histórico limpio y auditable.
 - Preparado para dashboards y tendencias.
 - Flexible y extensible.
-
----
-# README - Análisis Prueba Walmart 2025
-
----
-
-# 🔹 Overview del Proyecto
-
-Este proyecto tiene como objetivo realizar un análisis de inventario utilizando la arquitectura Medallion (Bronze, Silver) en Azure Databricks, partiendo de un archivo Excel suministrado por Walmart. El enfoque fue:
-
-- Cargar datos en capa **Bronze** (sin transformaciones).
-- Realizar limpieza y validaciones en capa **Silver**.
-- Generar análisis estadísticos y visualizaciones para entender el desempeño de **In Stock** y **Dispersión**.
-
-**Tecnologías utilizadas:**
-- Microsoft Excel
-- Azure Databricks
-- PySpark
-- Python (Matplotlib, Pandas)
-
+- 
 ---
 
 # 🔹 Caso 6: Modelo de Almacenamiento Semanal en Nube
