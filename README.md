@@ -174,6 +174,80 @@ Diseñar un modelo de almacenamiento robusto que permita:
 - Flexible y extensible.
 
 ---
+# README - Análisis Prueba Walmart 2025
+
+---
+
+# 🔹 Overview del Proyecto
+
+Este proyecto tiene como objetivo realizar un análisis de inventario utilizando la arquitectura Medallion (Bronze, Silver) en Azure Databricks, partiendo de un archivo Excel suministrado por Walmart. El enfoque fue:
+
+- Cargar datos en capa **Bronze** (sin transformaciones).
+- Realizar limpieza y validaciones en capa **Silver**.
+- Generar análisis estadísticos y visualizaciones para entender el desempeño de **In Stock** y **Dispersión**.
+
+**Tecnologías utilizadas:**
+- Microsoft Excel
+- Azure Databricks
+- PySpark
+- Python (Matplotlib, Pandas)
+
+---
+
+# 🔹 Caso 6: Modelo de Almacenamiento Semanal en Nube
+
+## Escenario
+- Los usuarios cargan semanalmente un archivo Excel.
+- El contenido debe almacenarse en una tabla en la nube (por ejemplo, BigQuery).
+- Se deben cumplir los principios de historial, auditoría y control de duplicados definidos en el Caso 5.
+
+## Propuesta de Solución
+
+### Flujo de procesamiento
+
+1. **Carga del archivo Excel** en un bucket de almacenamiento en la nube (Google Cloud Storage o Azure Blob Storage).
+2. **Trigger automático** mediante Cloud Functions o Azure Functions al detectar un nuevo archivo.
+3. **Pipeline de procesamiento** utilizando Databricks Autoloader o Dataflow:
+   - Validación de formato y datos.
+   - Prevención de duplicados.
+   - Agregado de metadata (source, fecha de carga, usuario).
+4. **Carga de datos** en BigQuery en la tabla `fact_inventario_historial` (modo append).
+5. **Consumo BI** desde Power BI, Looker o Google Data Studio.
+
+### Tecnologías propuestas
+
+| Etapa | Tecnología |
+|:---|:---|
+| Almacenamiento de archivos | Google Cloud Storage (GCS) o Azure Blob Storage |
+| Automatización de ingesta | Cloud Functions / Azure Functions |
+| Procesamiento | Databricks (PySpark) o Google Dataflow |
+| Almacenamiento de datos | BigQuery |
+| Consumo de datos | Power BI, Looker, Google Data Studio |
+
+### Beneficios de esta Arquitectura
+- **Historial completo** gracias a `fecha_corte` y `fecha_carga`.
+- **Prevención de duplicados** con validaciones de claves naturales.
+- **Auditoría** de procesos de carga mediante campos de fuente y usuario.
+- **Alta disponibilidad** para equipos de BI.
+- **Escalabilidad** y **automatización** del proceso de ingesta.
+
+### Representación del flujo
+
+```
+Usuario
+  ↓
+Carga Excel → Bucket en Storage (GCS / Blob Storage)
+  ↓
+Trigger automático (Cloud Function / Azure Function)
+  ↓
+Pipeline de procesamiento (Databricks / Dataflow)
+  ↓
+Tabla BigQuery: fact_inventario_historial
+  ↓
+Dashboards BI (Power BI / Looker / Data Studio)
+```
+
+---
 
 _Elaborado por: Mario Barboza_
 
