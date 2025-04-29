@@ -82,7 +82,48 @@ Este proyecto tiene como objetivo realizar un análisis de inventario utilizando
 | Intento de creación de tabla automática en Databricks | Se evitó, prefiriendo carga limpia por PySpark |
 | Valores nulos encontrados en "Tiendas con Inventario" y "Tiendas sin Inventario" | Se filtraron en la limpieza de `df_silver` |
 
+---
+
+# 🔹 Caso 2: Análisis de In Stock
+
+## Actividades realizadas
+- Se analizó el comportamiento de In Stock a nivel global, país, formato y categoría.
+- Se identificaron desviaciones respecto a la meta de 97.5%.
+- Se construyeron gráficos de apoyo para visualización.
+- Se elaboraron conclusiones y recomendaciones por nivel de análisis.
+
+## Principales hallazgos
+- El In Stock promedio global fue de 96.36%, por debajo de la meta.
+- Guatemala lideró en In Stock, pero no cumplió meta.
+- DISCOUNT fue el formato con mejor desempeño.
+- Cosméticos (D59) fue la categoría más afectada.
+
+## Recomendaciones
+- Intervenir categoría de cosméticos.
+- Replicar buenas prácticas de DISCOUNT.
+- Implementar alertas automáticas para categorías con In Stock < 95%.
+
+---
+
+# 🔹 Caso 3: Análisis de Dispersión
+
+## Actividades realizadas
+- Se analizó la Dispersión global, por país y por formato.
+- Se verificó el cumplimiento de la meta de 9%.
+- Se elaboraron visualizaciones de Dispersión promedio.
+
+## Principales hallazgos
+- La Dispersión promedio global fue de 12.37%, superando la meta.
+- Nicaragua fue el único país que cumplió la meta de Dispersión.
+- HYPERMARKET presentó la mayor Dispersión entre los formatos.
+
+## Recomendaciones
+- Replicar las prácticas de Nicaragua y DISCOUNT.
+- Rediseñar logística en HYPERMARKET y BODEGA.
+- Establecer alertas de Dispersión >15% y auditar tiendas en Costa Rica.
+
+---
 
 _Elaborado por: Mario Barboza_
 
-
+_Proyecto: Prueba de Análisis de Inventario Walmart 2025_
